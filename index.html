@@ -16,12 +16,17 @@
             --border: #e2e8f0;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
         body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+        
         header { border-bottom: 1px solid var(--border); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
         
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 42px; width: auto; display: block; border-radius: 4px; }
+        /* LOGO CORPORATIVO DESTACADO Y VISIBLE */
+        .logo-container { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+        .logo-icon { background: linear-gradient(135deg, #0284c7, #4f46e5); color: #ffffff; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3); }
+        .logo-text { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text-main); }
+        .logo-text span { color: var(--accent); }
 
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
@@ -36,9 +41,6 @@
         .cta-btn { display: inline-block; background: var(--accent); color: #ffffff; font-weight: 600; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 14px var(--accent-glow); }
         .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3); }
 
-        .hero-banner { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 2rem; }
-        .hero-banner-img { width: 100%; height: auto; max-height: 480px; object-fit: cover; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02); }
-
         .section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
         .section-title { font-size: 2.2rem; margin-bottom: 0.5rem; text-align: center; color: var(--text-main); }
         .section-subtitle { color: var(--text-muted); text-align: center; margin-bottom: 3.5rem; font-size: 1.1rem; }
@@ -52,12 +54,25 @@
         .card ul li { margin-bottom: 0.6rem; padding-left: 1.2rem; position: relative; }
         .card ul li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
 
-        .contact-section { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 2rem; text-align: center; margin-top: 4rem; }
+        .card-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; text-decoration: none; margin-top: 1rem; font-size: 0.95rem; transition: gap 0.2s; }
+        .card-link:hover { gap: 0.8rem; }
+
+        /* Secciones de Profundidad Detallada */
+        .detail-section { background: var(--card-bg); border-top: 1px solid var(--border); padding: 5rem 2rem; }
+        .detail-container { max-width: 1000px; margin: 0 auto; background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-bottom: 3rem; }
+        .detail-container h3 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.7rem; }
+        .detail-container p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1rem; }
+        .detail-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .feature-box { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+        .feature-box h4 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; }
+        .feature-box p { font-size: 0.9rem; margin-bottom: 0; }
+
+        .contact-section { background: #ffffff; border-top: 1px solid var(--border); padding: 5rem 2rem; text-align: center; }
         .contact-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
-        .contact-item { font-size: 1.1rem; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: #ffffff; padding: 1rem 2rem; border-radius: 8px; border: 1px solid var(--border); transition: border-color 0.2s; }
+        .contact-item { font-size: 1.1rem; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: var(--card-bg); padding: 1rem 2rem; border-radius: 8px; border: 1px solid var(--border); transition: border-color 0.2s; }
         .contact-item:hover { border-color: var(--accent); }
 
-        footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+        footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; background: var(--card-bg); }
     </style>
 </head>
 <body>
@@ -65,12 +80,13 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <img src="clipedia-logo.jpg" alt="Clipedia Logo" class="logo-img">
+                <div class="logo-icon">▶</div>
+                <div class="logo-text">Cli<span>pedia</span></div>
             </a>
             <ul class="nav-links">
-                <li><a href="#streaming" data-es="Streaming TuDirecto" data-en="TuDirecto Streaming">Streaming TuDirecto</a></li>
-                <li><a href="#ia" data-es="Contenido IA" data-en="AI Content">Contenido IA</a></li>
-                <li><a href="#automatizacion" data-es="Automatización" data-en="Automation">Automatización</a></li>
+                <li><a href="#detalles-streaming" data-es="Streaming" data-en="Streaming">Streaming</a></li>
+                <li><a href="#detalles-ia" data-es="Contenido IA" data-en="AI Content">Contenido IA</a></li>
+                <li><a href="#detalles-auto" data-es="Automatización" data-en="Automation">Automatización</a></li>
                 <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
                 <li><button class="lang-switch" id="langBtn" onclick="toggleLanguage()">EN</button></li>
             </ul>
@@ -87,59 +103,117 @@
         <a href="#contacto" class="cta-btn" data-es="Iniciar Proyecto" data-en="Start Project">Iniciar Proyecto</a>
     </section>
 
-    <!-- Imagen de Portada / Banner principal -->
-    <div class="hero-banner">
-        <img src="clipedia-logo.jpg" alt="Clipedia Producción Audiovisual y Streaming" class="hero-banner-img">
-    </div>
-
+    <!-- Resumen de Servicios (Tarjetas con enlace directo a profundidad) -->
     <section class="section" id="servicios">
         <h2 class="section-title" data-es="Soluciones Tecnológicas Integradas" data-en="Integrated Technology Solutions">Soluciones Tecnológicas Integradas</h2>
-        <p class="section-subtitle" data-es="Diseñadas para maximizar el impacto de tu marca y optimizar tus operaciones" data-en="Designed to maximize your brand's impact and optimize your operations">Diseñadas para maximizar el impacto de tu marca y optimizar tus operaciones</p>
+        <p class="section-subtitle" data-es="Haz clic en cada opción para profundizar en las especificaciones técnicas" data-en="Click on each option to dive deeper into technical specs">Haz clic en cada opción para profundizar en las especificaciones técnicas</p>
         
         <div class="grid">
-            <!-- Servicio 1: Streaming TuDirecto (Sin mención a IA, enfoque puro broadcast) -->
-            <div class="card" id="streaming">
+            <div class="card">
                 <div>
                     <h3 data-es="Streaming TuDirecto & Realización" data-en="TuDirecto Streaming & Production">Streaming TuDirecto & Realización</h3>
-                    <p data-es="Retransmisiones multicámara profesionales para eventos corporativos, congresos e híbridos con calidad de emisión broadcast garantizada." data-en="Professional multi-camera broadcasts for corporate, hybrid, and congress events with guaranteed broadcast-quality delivery.">Retransmisiones multicámara profesionales para eventos corporativos, congresos e híbridos con calidad de emisión broadcast garantizada.</p>
+                    <p data-es="Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad broadcast." data-en="Professional multi-camera broadcasts for corporate and hybrid events with broadcast quality.">Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad broadcast.</p>
                     <ul>
-                        <li data-es="Realización técnica en directo y conmutación multicámara avanzada." data-en="Advanced live technical switching and multi-camera direction.">Realización técnica en directo y conmutación multicámara avanzada.</li>
-                        <li data-es="Configuración de hardware de codificación y streaming de alta estabilidad." data-en="High-stability encoding and streaming hardware configuration.">Configuración de hardware de codificación y streaming de alta estabilidad.</li>
-                        <li data-es="Gestión integral de sonido directo, iluminación y señal de vídeo." data-en="Comprehensive management of direct sound, lighting, and video signal.">Gestión integral de sonido directo, iluminación y señal de vídeo.</li>
+                        <li data-es="Realización técnica en directo avanzada." data-en="Advanced live technical direction.">Realización técnica en directo avanzada.</li>
+                        <li data-es="Estabilidad de emisión y codificación profesional." data-en="Emission stability and professional encoding.">Estabilidad de emisión y codificación profesional.</li>
                     </ul>
                 </div>
-                <a href="#contacto" class="cta-btn" style="text-align: center; padding: 0.6rem 1rem;" data-es="Contratar Streaming" data-en="Book Streaming">Contratar Streaming</a>
+                <a href="#detalles-streaming" class="card-link" data-es="Profundizar en Streaming &rarr;" data-en="Deep dive into Streaming &rarr;">Profundizar en Streaming &rarr;</a>
             </div>
 
-            <!-- Servicio 2: Contenido IA y Vídeo -->
-            <div class="card" id="ia">
+            <div class="card">
                 <div>
                     <h3 data-es="Creación de Contenido & Vídeo IA" data-en="Content Creation & AI Video">Creación de Contenido & Vídeo IA</h3>
-                    <p data-es="Producción de piezas publicitarias, edición profesional de vídeo, motion graphics y generación sintética de imagen y vídeo de alta fidelidad." data-en="Production of advertising pieces, professional video editing, motion graphics, and high-fidelity synthetic image/video generation.">Producción de piezas publicitarias, edición profesional de vídeo, motion graphics y generación sintética de imagen y vídeo de alta fidelidad.</p>
+                    <p data-es="Producción publicitaria, edición profesional y generación sintética de imagen y vídeo." data-en="Advertising production, professional editing, and synthetic image/video generation.">Producción publicitaria, edición profesional y generación sintética de imagen y vídeo.</p>
                     <ul>
-                        <li data-es="Spots comerciales, corporativos y creatividades optimizadas para redes sociales." data-en="Commercial spots, corporate videos, and social media optimized creatives.">Spots comerciales, corporativos y creatividades optimizadas para redes sociales.</li>
-                        <li data-es="Upscaling de vídeo por IA y mejora de resolución para archivos históricos o brutos." data-en="AI video upscaling and resolution enhancement for legacy or raw footage.">Upscaling de vídeo por IA y mejora de resolución para archivos históricos o brutos.</li>
-                        <li data-es="Diseño sonoro, postproducción de audio y motion graphics avanzados." data-en="Sound design, audio post-production, and advanced motion graphics.">Diseño sonoro, postproducción de audio y motion graphics avanzados.</li>
+                        <li data-es="Spots y motion graphics avanzados." data-en="Spots and advanced motion graphics.">Spots y motion graphics avanzados.</li>
+                        <li data-es="Upscaling y optimización mediante IA." data-en="AI upscaling and optimization.">Upscaling y optimización mediante IA.</li>
                     </ul>
                 </div>
-                <a href="#contacto" class="cta-btn" style="text-align: center; padding: 0.6rem 1rem;" data-es="Ver Producción" data-en="Explore Production">Ver Producción</a>
+                <a href="#detalles-ia" class="card-link" data-es="Profundizar en Contenido IA &rarr;" data-en="Deep dive into AI Content &rarr;">Profundizar en Contenido IA &rarr;</a>
             </div>
 
-            <!-- Servicio 3: Automatización, Web y Agentes IA -->
-            <div class="card" id="automatizacion">
+            <div class="card">
                 <div>
-                    <h3 data-es="Automatización, Web y Agentes IA" data-en="Automation, Web & AI Agents">Automatización, Web y Agentes IA</h3>
-                    <p data-es="Desarrollo de páginas web corporativas de alto rendimiento e integración de agentes virtuales autónomos para la atención al cliente y ventas." data-en="High-performance corporate website development and integration of autonomous virtual agents for customer support and sales.">Desarrollo de páginas web corporativas de alto rendimiento e integración de agentes virtuales autónomos para la atención al cliente y ventas.</p>
+                    <h3 data-es="Automatización, Web y Agentes IA" data-en="Automation, Web & AI Agents">Automation, Web & AI Agents</h3>
+                    <p data-es="Desarrollo web corporativo e integración de agentes virtuales autónomos." data-en="Corporate web development and integration of autonomous virtual agents.">Desarrollo web corporativo e integración de agentes virtuales autónomos.</p>
                     <ul>
-                        <li data-es="Creación y despliegue de asistentes virtuales inteligentes y chatbots orientados a conversión." data-en="Creation and deployment of intelligent virtual assistants and conversion-focused chatbots.">Creación y despliegue de asistentes virtuales inteligentes y chatbots orientados a conversión.</li>
-                        <li data-es="Diseño de páginas web corporativas rápidas, modernas y adaptadas a SEO." data-en="Fast, modern, and SEO-optimized corporate website design.">Diseño de páginas web corporativas rápidas, modernas y adaptadas a SEO.</li>
-                        <li data-es="Automatización de flujos de trabajo internos y optimización de procesos de gestión." data-en="Internal workflow automation and management process optimization.">Automatización de flujos de trabajo internos y optimización de procesos de gestión.</li>
+                        <li data-es="Asistentes virtuales y chatbots inteligentes." data-en="Virtual assistants and smart chatbots.">Asistentes virtuales y chatbots inteligentes.</li>
+                        <li data-es="Optimización de flujos y procesos internos." data-en="Internal workflows and process optimization.">Optimización de flujos y procesos internos.</li>
                     </ul>
                 </div>
-                <a href="#contacto" class="cta-btn" style="text-align: center; padding: 0.6rem 1rem;" data-es="Automatizar Negocio" data-en="Automate Business">Automatizar Negocio</a>
+                <a href="#detalles-auto" class="card-link" data-es="Profundizar en Automatización &rarr;" data-en="Deep dive into Automation &rarr;">Profundizar en Automatización &rarr;</a>
             </div>
         </div>
     </section>
+
+    <!-- SECCIONES DE PROFUNDIDAD TÉCNICA -->
+    <div class="detail-section">
+        
+        <!-- Detalle 1: Streaming -->
+        <div class="detail-container" id="detalles-streaming">
+            <h3 data-es="📡 Streaming TuDirecto & Realización en Detalle" data-en="📡 TuDirecto Streaming & Production in Detail">📡 Streaming TuDirecto & Realización en Detalle</h3>
+            <p data-es="Ofrecemos un despliegue técnico integral para que cualquier evento corporativo, conferencia o retransmisión híbrida alcance estándares de televisión profesional. Nos encargamos de todo el pipeline técnico de vídeo y sonido en directo." data-en="We offer an end-to-end technical deployment so that any corporate event, conference, or hybrid broadcast reaches professional television standards. We handle the entire live video and sound pipeline.">Ofrecemos un despliegue técnico integral para que cualquier evento corporativo, conferencia o retransmisión híbrida alcance estándares de televisión profesional. Nos encargamos de todo el pipeline técnico de vídeo y sonido en directo.</p>
+            
+            <div class="detail-features">
+                <div class="feature-box">
+                    <h4 data-es="Realización Multicámara" data-en="Multi-camera Direction">Realización Multicámara</h4>
+                    <p data-es="Coordinación de múltiples cámaras profesionales con conmutación en directo, planos estables y transiciones limpias." data-en="Coordination of multiple professional cameras with live switching, stable framing, and clean transitions.">Coordinación de múltiples cámaras profesionales con conmutación en directo, planos estables y transiciones limpias.</p>
+                </div>
+                <div class="feature-box">
+                    <h4 data-es="Hardware de Codificación Robusto" data-en="Robust Encoding Hardware">Hardware de Codificación Robusto</h4>
+                    <p data-es="Uso de equipos de codificación dedicados y routers con redundancia de red para evitar cortes o pérdidas de señal." data-en="Use of dedicated encoding hardware and routers with network redundancy to prevent signal drops.">Uso de equipos de codificación dedicados y routers con redundancia de red para evitar cortes o pérdidas de señal.</p>
+                </div>
+                <div class="feature-box">
+                    <h4 data-es="Sonido Broadcast" data-en="Broadcast Audio">Sonido Broadcast</h4>
+                    <p data-es="Captación de audio limpio y ecualizado para ponentes presenciales e interacciones remotas sin latencia molesta." data-en="Clean, equalized audio capture for onsite speakers and remote interactions without annoying latency.">Captación de audio limpio y ecualizado para ponentes presenciales e interacciones remotas sin latencia molesta.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalle 2: Contenido IA -->
+        <div class="detail-container" id="detalles-ia">
+            <h3 data-es="✨ Creación de Contenido & Vídeo IA en Detalle" data-en="✨ Content Creation & AI Video in Detail">✨ Creación de Contenido & Vídeo IA en Detalle</h3>
+            <p data-es="Fusionamos las técnicas de postproducción cinematográfica tradicional con flujos de trabajo de Inteligencia Artificial de última generación para potenciar al máximo la imagen visual de tu marca o proyecto." data-en="We fuse traditional cinematic post-production techniques with cutting-edge Artificial Intelligence workflows to maximize the visual impact of your brand or project.">Fusionamos las técnicas de postproducción cinematográfica tradicional con flujos de trabajo de Inteligencia Artificial de última generación para potenciar al máximo la imagen visual de tu marca o proyecto.</p>
+            
+            <div class="detail-features">
+                <div class="feature-box">
+                    <h4 data-es="Upscaling y Mejora por IA" data-en="AI Upscaling & Enhancement">Upscaling y Mejora por IA</h4>
+                    <p data-es="Recuperación y escalado de resolución en grabaciones antiguas o brutos de cámara para llevarlos a calidad 4K nítida." data-en="Resolution recovery and upscaling in legacy footage or raw camera files to pristine 4K quality.">Recuperación y escalado de resolución en grabaciones antiguas o brutos de cámara para llevarlos a calidad 4K nítida.</p>
+                </div>
+                <div class="feature-box">
+                    <h4 data-es="Spots Publicitarios & Reels" data-en="Commercial Spots & Reels">Spots Publicitarios & Reels</h4>
+                    <p data-es="Edición dinámica de piezas verticales y horizontales optimizadas para captar la atención en redes sociales y campañas." data-en="Dynamic editing of vertical and horizontal pieces optimized to capture attention on social networks and campaigns.">Edición dinámica de piezas verticales y horizontales optimizadas para captar la atención en redes sociales y campañas.</p>
+                </div>
+                <div class="feature-box">
+                    <h4 data-es="Motion Graphics & Sonido" data-en="Motion Graphics & Sound">Motion Graphics & Sonido</h4>
+                    <p data-es="Animaciones corporativas personalizadas y diseño de sonido inmersivo que elevan el valor de producción." data-en="Custom corporate animations and immersive sound design that elevate production value.">Animaciones corporativas personalizadas y diseño de sonido inmersivo que elevan el valor de producción.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalle 3: Automatización -->
+        <div class="detail-container" id="detalles-auto">
+            <h3 data-es="⚡ Automatización, Web y Agentes IA en Detalle" data-en="⚡ Automation, Web & AI Agents in Detail">⚡ Automatización, Web y Agentes IA en Detalle</h3>
+            <p data-es="Transformamos digitalmente tu negocio mediante la creación de plataformas web rápidas y la integración de asistentes virtuales inteligentes que automatizan la atención al cliente y optimizan tareas repetitivas." data-en="We digitally transform your business by building fast web platforms and integrating smart virtual assistants that automate customer support and optimize repetitive tasks.">Transformamos digitalmente tu negocio mediante la creación de plataformas web rápidas y la integración de asistentes virtuales inteligentes que automatizan la atención al cliente y optimizan tareas repetitivas.</p>
+            
+            <div class="detail-features">
+                <div class="feature-box">
+                    <h4 data-es="Agentes IA y Asistentes" data-en="AI Agents & Assistants">Agentes IA y Asistentes</h4>
+                    <p data-es="Implementación de chatbots avanzados capaces de entender el contexto, responder dudas complejas y captar leads 24/7." data-en="Implementation of advanced chatbots capable of understanding context, answering complex questions, and capturing leads 24/7.">Implementación de chatbots avanzados capaces de entender el contexto, responder dudas complejas y captar leads 24/7.</p>
+                </div>
+                <div class="feature-box">
+                    <h4 data-es="Páginas Web Corporativas" data-en="Corporate Websites">Páginas Web Corporativas</h4>
+                    <p data-es="Desarrollo de sitios web modernos, ligeros, perfectamente adaptados a dispositivos móviles y optimizados para conversión." data-en="Development of modern, lightweight websites, fully adapted to mobile devices and optimized for conversion.">Desarrollo de sitios web modernos, ligeros, perfectamente adaptados a dispositivos móviles y optimizados para conversión.</p>
+                </div>
+                <div class="feature-box">
+                    <h4 data-es="Optimización de Flujos" data-en="Workflow Optimization">Optimización de Flujos</h4>
+                    <p data-es="Conexión de herramientas y automatización de procesos internos para ahorrar horas de gestión manual en tu empresa." data-en="Connecting tools and automating internal processes to save hours of manual management in your company.">Conexión de herramientas y automatización de procesos internos para ahorrar horas de gestión manual en tu empresa.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- Sección de Contacto -->
     <section class="contact-section" id="contacto">
