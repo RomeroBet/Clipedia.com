@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Clipedia | Streaming, IA y Automatización</title>
+    <meta name="description" content="Soluciones integrales de streaming multicámara, producción de vídeo con IA y automatización de procesos empresariales.">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+        header { border-bottom: 1px solid var(--border); background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; }
+        .logo { font-weight: 700; font-size: 1.25rem; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .lang-switch { border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; color: var(--text-main); background: transparent; cursor: pointer; transition: background 0.2s; }
+        .lang-switch:hover { background: var(--border); }
+        
+        .hero { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem 4rem 2rem; text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+        .hero h1 span { background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 2.5rem auto; }
+        .cta-btn { display: inline-block; background: var(--accent); color: #000; font-weight: 600; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 20px var(--accent-glow); }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(56, 189, 248, 0.4); }
+
+        .section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        .section-title { font-size: 2rem; margin-bottom: 0.5rem; text-align: center; }
+        .section-subtitle { color: var(--text-muted); text-align: center; margin-bottom: 3rem; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; transition: border-color 0.2s, transform 0.2s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-4px); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); }
+        .card p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .card ul { list-style: none; color: var(--text-muted); font-size: 0.9rem; }
+        .card ul li { margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative; }
+        .card ul li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+
+        footer { border-top: 1px solid var(--border); margin-top: 4rem; padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Clipedia<span>.com</span></a>
+            <ul class="nav-links">
+                <li><a href="#streaming" data-es="Streaming & Vídeo" data-en="Streaming & Video">Streaming & Vídeo</a></li>
+                <li><a href="#ia" data-es="Contenido IA" data-en="AI Content">Contenido IA</a></li>
+                <li><a href="#automatizacion" data-es="Automatización" data-en="Automation">Automatización</a></li>
+                <li><button class="lang-switch" id="langBtn" onclick="toggleLanguage()">EN</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 data-es="Transformación Multimedia y &lt;span&gt;Automatización Inteligente&lt;/span&gt;" data-en="Multimedia Transformation &lt;span&gt;Intelligent Automation&lt;/span&gt;">
+            Transformación Multimedia y <span>Automatización Inteligente</span>
+        </h1>
+        <p data-es="Unificamos la producción audiovisual en directo de alta gama con el desarrollo de agentes virtuales, páginas web con IA y la optimización de procesos corporativos." data-en="We unify high-end live audiovisual production with virtual agent development, AI-powered websites, and corporate process optimization.">
+            Unificamos la producción audiovisual en directo de alta gama con el desarrollo de agentes virtuales, páginas web con IA y la optimización de procesos corporativos.
+        </p>
+        <a href="#contacto" class="cta-btn" data-es="Iniciar Proyecto" data-en="Start Project">Iniciar Proyecto</a>
+    </section>
+
+    <section class="section" id="servicios">
+        <h2 class="section-title" data-es="Soluciones Tecnológicas Integradas" data-en="Integrated Technology Solutions">Soluciones Tecnológicas Integradas</h2>
+        <p class="section-subtitle" data-es="Diseñadas para maximizar el impacto de tu marca y optimizar tus operaciones" data-en="Designed to maximize your brand's impact and optimize your operations">Diseñadas para maximizar el impacto de tu marca y optimizar tus operaciones</p>
+        
+        <div class="grid">
+            <div class="card" id="streaming">
+                <h3 data-es="Streaming & Realización + Plus IA" data-en="Streaming & Production + AI Plus">Streaming & Realización + Plus IA</h3>
+                <p data-es="Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad de emisión broadcast." data-en="Professional multi-camera broadcasts for corporate and hybrid events with broadcast-quality delivery.">Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad de emisión broadcast.</p>
+                <ul>
+                    <li data-es="Realización técnica en directo avanzada." data-en="Advanced live technical direction and switching.">Realización técnica en directo avanzada.</li>
+                    <li data-es="<strong>El Plus:</strong> Generación automática de mini-clips optimizados para redes directamente desde la grabación del evento." data-en="<strong>The Plus:</strong> Automatic generation of social-optimized mini-clips directly from event recordings."><strong>El Plus:</strong> Generación automática de mini-clips optimizados para redes directamente desde la grabación del evento.</li>
+                </ul>
+            </div>
+
+            <div class="card" id="ia">
+                <h3 data-es="Creación de Contenido & Vídeo IA" data-en="Content Creation & AI Video">Creación de Contenido & Vídeo IA</h3>
+                <p data-es="Producción de piezas publicitarias, edición profesional, motion graphics y generación sintética de imagen y vídeo de alta fidelidad." data-en="Production of advertising pieces, professional editing, motion graphics, and high-fidelity synthetic image/video generation.">Producción de piezas publicitarias, edición profesional, motion graphics y generación sintética de imagen y vídeo de alta fidelidad.</p>
+                <ul>
+                    <li data-es="Spots comerciales y creatividades para redes." data-en="Commercial spots and social media creatives.">Spots comerciales y creatividades para redes.</li>
+                    <li data-es="Up-scaling de vídeo y optimización por IA." data-en="Video up-scaling and AI enhancement.">Up-scaling de vídeo y optimización por IA.</li>
+                    <li data-es="Edición de audio y sonido profesional." data-en="Professional audio editing and sound design.">Edición de audio y sonido profesional.</li>
+                </ul>
+            </div>
+
+            <div class="card" id="automatizacion">
+                <h3 data-es="Automatización, Web y Agentes IA" data-en="Automation, Web & AI Agents">Automatización, Web y Agentes IA</h3>
+                <p data-es="Desarrollo de páginas web corporativas de alto rendimiento e integración de agentes virtuales autónomos para la atención al cliente y ventas." data-en="High-performance corporate website development and integration of autonomous virtual agents for customer support and sales.">Desarrollo de páginas web corporativas de alto rendimiento e integración de agentes virtuales autónomos para la atención al cliente y ventas.</p>
+                <ul>
+                    <li data-es="Creación de asistentes virtuales inteligentes." data-en="Creation of smart virtual assistants.">Creación de asistentes virtuales inteligentes.</li>
+                    <li data-es="Automatización de flujos de trabajo internos." data-en="Internal workflow automation.">Automatización de flujos de trabajo internos.</li>
+                    <li data-es="Optimización y mejora de procesos de gestión." data-en="Management process optimization and improvement.">Optimización y mejora de procesos de gestión.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p data-es="&copy; 2026 Clipedia. Todos los derechos reservados." data-en="&copy; 2026 Clipedia. All rights reserved.">&copy; 2026 Clipedia. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('html-root').setAttribute('lang', currentLang);
+            document.getElementById('langBtn').innerText = currentLang === 'es' ? 'EN' : 'ES';
+
+            // Actualizar todos los elementos que tengan atributos data-es y data-en
+            const elements = document.querySelectorAll('[data-es]');
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.innerHTML = el.getAttribute('data-en');
+                } else {
+                    el.innerHTML = el.getAttribute('data-es');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
