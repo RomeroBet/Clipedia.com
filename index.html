@@ -22,11 +22,9 @@
         header { border-bottom: 1px solid var(--border); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
         
-        /* LOGO CORPORATIVO DESTACADO Y VISIBLE */
-        .logo-container { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-        .logo-icon { background: linear-gradient(135deg, #0284c7, #4f46e5); color: #ffffff; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3); }
-        .logo-text { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text-main); }
-        .logo-text span { color: var(--accent); }
+        /* LOGO CON IMAGEN PROPIA DE GITHUB AJUSTADA A BUEN TAMAÑO */
+        .logo-container { display: flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 50px; width: auto; max-width: 220px; object-fit: contain; display: block; }
 
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
@@ -80,8 +78,7 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <div class="logo-icon">▶</div>
-                <div class="logo-text">Cli<span>pedia</span></div>
+                <img src="clipedia-logo.jpg" alt="Clipedia Logo" class="logo-img">
             </a>
             <ul class="nav-links">
                 <li><a href="#detalles-streaming" data-es="Streaming" data-en="Streaming">Streaming</a></li>
