@@ -42,38 +42,65 @@
             padding: 0.8rem 2rem; 
         }
         
-        /* Logo integrado por código (Horizontal y Sin Recuadro) */
+        /* Contenedor del Logo Vertical con Luz Resplandeciente */
         .logo-container { 
             display: flex; 
+            flex-direction: column;     /* Coloca el dibujo ARRIBA de las letras */
             align-items: center; 
-            gap: 14px; 
+            justify-content: center;
             text-decoration: none; 
-            padding: 4px 0;
+            padding: 10px 18px;
+            position: relative;
+            border-radius: 16px;
+            transition: transform 0.2s ease;
         }
         
-        /* Rombo SVG vectorizado con los colores exactos de Clipedia */
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            flex-shrink: 0;
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3));
+        /* Luz sutil / destello suave difuminado alrededor del logo */
+        .logo-container::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(11, 15, 23, 0) 72%);
+            filter: blur(10px);
+            z-index: 0;
+            pointer-events: none;
         }
 
-        /* Texto Clipedia integrado perfectamente sin parches */
+        .logo-container:hover {
+            transform: scale(1.03);
+        }
+
+        /* Dibujo del Rombo centrado en la parte superior */
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            z-index: 1;
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
+            margin-bottom: 4px;
+        }
+
+        /* Texto Clipedia abajo del logo */
         .logo-text {
             color: #ffffff;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
             line-height: 1;
+            z-index: 1;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
         .logo-text .reg {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             vertical-align: super;
             font-weight: 400;
-            opacity: 0.7;
-            margin-left: 1px;
+            opacity: 0.8;
+            margin-left: 2px;
         }
 
         /* Enlaces del Menú en Blanco Puro con Hover Calipso */
@@ -200,16 +227,13 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <!-- Rombo vectorizado en alta definición -->
+                <!-- Rombo en la parte superior -->
                 <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Franja 1: Azul Oscuro -->
                     <polygon points="50,10 20,40 32,52 62,22" fill="#034ea2" />
-                    <!-- Franja 2: Azul Medio -->
                     <polygon points="62,22 32,52 44,64 74,34" fill="#0072ce" />
-                    <!-- Franja 3: Azul Celeste -->
                     <polygon points="74,34 44,64 56,76 86,46" fill="#38bdf8" />
                 </svg>
-                <!-- Nombre de la marca sin parches oscuros ni fondos -->
+                <!-- Nombre abajo del rombo -->
                 <span class="logo-text">Clipedia<span class="reg">&reg;</span></span>
             </a>
             <ul class="nav-links">
