@@ -7,69 +7,145 @@
     <meta name="description" content="Soluciones integrales de streaming multicámara profesional, producción de vídeo, creación web y automatización de procesos empresariales.">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --card-bg: #f8fafc;
-            --accent: #0284c7;
-            --accent-glow: rgba(2, 132, 199, 0.15);
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border: #e2e8f0;
+            /* Paleta de colores en Modo Oscuro con Acentos Celestes */
+            --bg-color: #0b0f17;
+            --card-bg: #131b2e;
+            --card-bg-hover: #1c2742;
+            --accent: #38bdf8;          /* Azul celeste resplandeciente */
+            --accent-dark: #0284c7;     /* Azul de marca */
+            --accent-glow: rgba(56, 189, 248, 0.25);
+            --text-main: #f8fafc;       /* Letras blancas brillantes */
+            --text-muted: #94a3b8;      /* Gris claro para texto secundario */
+            --border: #1e293b;
+            --border-accent: #0284c7;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
         
-        header { border-bottom: 1px solid var(--border); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        /* Header / Navegación */
+        header { 
+            border-bottom: 1px solid var(--border); 
+            background: rgba(11, 15, 23, 0.9); 
+            backdrop-filter: blur(12px); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 2rem; }
         
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 48px; width: auto; max-width: 220px; object-fit: contain; display: block; }
+        /* Logo ajustado y de mayor tamaño */
+        .logo-img { height: 65px; width: auto; max-width: 280px; object-fit: contain; display: block; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.15)); }
 
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent); }
-        .lang-switch { border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; color: var(--text-main); background: #f1f5f9; cursor: pointer; transition: background 0.2s; }
-        .lang-switch:hover { background: var(--border); }
+        .lang-switch { 
+            border: 1px solid var(--border-accent); 
+            padding: 0.4rem 0.9rem; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            font-weight: 600;
+            color: var(--accent); 
+            background: rgba(2, 132, 199, 0.1); 
+            cursor: pointer; 
+            transition: all 0.2s; 
+        }
+        .lang-switch:hover { background: var(--accent); color: #000000; }
         
-        .hero { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem 3rem 2rem; text-align: center; }
+        /* Hero Section */
+        .hero { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem 4rem 2rem; text-align: center; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--text-main); }
-        .hero h1 span { background: linear-gradient(to right, #0284c7, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 2.5rem auto; }
-        .cta-btn { display: inline-block; background: var(--accent); color: #ffffff; font-weight: 600; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 14px var(--accent-glow); }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3); }
+        .hero h1 span { 
+            background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 780px; margin: 0 auto 2.5rem auto; }
+        .cta-btn { 
+            display: inline-block; 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); 
+            color: #ffffff; 
+            font-weight: 700; 
+            padding: 0.9rem 2.2rem; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            box-shadow: 0 4px 20px var(--accent-glow); 
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(56, 189, 248, 0.4); }
 
+        /* Servicios */
         .section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
         .section-title { font-size: 2.2rem; margin-bottom: 0.5rem; text-align: center; color: var(--text-main); }
         .section-subtitle { color: var(--text-muted); text-align: center; margin-bottom: 3.5rem; font-size: 1.1rem; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
-        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 2rem; }
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: 14px; 
+            padding: 2.5rem; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .card:hover { 
+            border-color: var(--accent); 
+            background: var(--card-bg-hover);
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+        }
+        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
         .card p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
         .card ul { list-style: none; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
         .card ul li { margin-bottom: 0.6rem; padding-left: 1.2rem; position: relative; }
-        .card ul li::before { content: "—"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+        .card ul li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
 
         .card-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; text-decoration: none; margin-top: 1rem; font-size: 0.95rem; transition: gap 0.2s; }
-        .card-link:hover { gap: 0.8rem; }
+        .card-link:hover { gap: 0.8rem; text-decoration: underline; }
 
-        /* Secciones de Profundidad Detallada */
-        .detail-section { background: var(--card-bg); border-top: 1px solid var(--border); padding: 5rem 2rem; }
-        .detail-container { max-width: 1000px; margin: 0 auto; background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-bottom: 3rem; }
+        /* Secciones de Detalles */
+        .detail-section { background: #070a0f; border-top: 1px solid var(--border); padding: 5rem 2rem; }
+        .detail-container { 
+            max-width: 1000px; 
+            margin: 0 auto 3rem auto; 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            padding: 3rem; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+        }
         .detail-container h3 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 1rem; }
         .detail-container p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1rem; }
-        .detail-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .feature-box { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
-        .feature-box h4 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; }
+        .detail-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .feature-box { background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border); }
+        .feature-box h4 { font-size: 1.1rem; color: var(--accent); margin-bottom: 0.5rem; }
         .feature-box p { font-size: 0.9rem; margin-bottom: 0; color: var(--text-muted); }
 
-        .contact-section { background: #ffffff; border-top: 1px solid var(--border); padding: 5rem 2rem; text-align: center; }
-        .contact-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
-        .contact-item { font-size: 1.1rem; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.7rem; background: var(--card-bg); padding: 1rem 2rem; border-radius: 8px; border: 1px solid var(--border); transition: border-color 0.2s; }
-        .contact-item:hover { border-color: var(--accent); }
+        /* Contacto */
+        .contact-section { background: var(--bg-color); border-top: 1px solid var(--border); padding: 5rem 2rem; text-align: center; }
+        .contact-info { display: flex; justify-content: center; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }
+        .contact-item { 
+            font-size: 1.1rem; 
+            color: var(--text-main); 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.7rem; 
+            background: var(--card-bg); 
+            padding: 1.2rem 2.2rem; 
+            border-radius: 10px; 
+            border: 1px solid var(--border); 
+            transition: all 0.2s; 
+        }
+        .contact-item span { color: var(--accent); font-weight: 600; }
+        .contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
 
-        footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; background: var(--card-bg); }
+        footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; background: #070a0f; }
     </style>
 </head>
 <body>
@@ -77,7 +153,8 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <img src="clipedia-logo.jpg" alt="Clipedia" class="logo-img">
+                <!-- Nombre del archivo codificado para prevenir errores con espacios en GitHub Pages -->
+                <img src="clipedia%20logo%20web%20nuevo%20.jpg" alt="Clipedia" class="logo-img">
             </a>
             <ul class="nav-links">
                 <li><a href="#detalles-streaming" data-es="Streaming" data-en="Streaming">Streaming</a></li>
@@ -204,7 +281,7 @@
                 </div>
                 <div class="feature-box">
                     <h4 data-es="Optimización de Procesos" data-en="Process Optimization">Optimización de Procesos</h4>
-                    <p data-es="Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas." data-en="Systematization of internal tasks through intelligent connection of corporate tools.">Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas.</p>
+                    <p data-es="Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas." data-en="Systematization of internal tasks through intelligent connection of corporate tools.">Systematization of internal tasks through intelligent connection of corporate tools.</p>
                 </div>
             </div>
         </div>
