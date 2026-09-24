@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="html-root">
+<html lang="es" dir="ltr" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +7,58 @@
     <meta name="description" content="Soluciones integrales de streaming multicámara profesional, producción de vídeo, creación web y automatización de procesos empresariales.">
     <style>
         :root {
-            /* Paleta de colores en Modo Oscuro con Acentos Celestes */
-            --bg-color: #0b0f17;
-            --card-bg: #131b2e;
-            --card-bg-hover: #1c2742;
-            --accent: #38bdf8;          /* Azul celeste / calipso resplandeciente */
+            /* Paleta de colores */
+            --bg-color: #080b11;
+            --card-bg: rgba(19, 27, 46, 0.7);
+            --card-bg-hover: rgba(28, 39, 66, 0.85);
+            --accent: #38bdf8;          /* Azul celeste resplandeciente */
             --accent-dark: #0284c7;     /* Azul de marca */
-            --accent-glow: rgba(56, 189, 248, 0.25);
+            --accent-glow: rgba(56, 189, 248, 0.35);
             --text-main: #ffffff;       /* Letras blancas puras */
-            --text-muted: #94a3b8;      /* Gris claro para texto secundario */
-            --border: #1e293b;
+            --text-muted: #94a3b8;      /* Gris para texto secundario */
+            --border: rgba(30, 41, 59, 0.8);
             --border-accent: #0284c7;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
         
+        /* BODY CON LUZ DINÁMICA DE FONDO (EFECTO CON VIDA) */
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Capa animada del reflejo orgánico ambiental */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.12) 0%, rgba(2, 132, 199, 0.05) 30%, transparent 65%);
+            animation: floatGlow 18s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Movimiento sutil y respiración del destello de fondo */
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            50% { transform: translate(4%, 6%) scale(1.15); opacity: 0.9; }
+            100% { transform: translate(-4%, -3%) scale(0.95); opacity: 0.7; }
+        }
+
         /* Header / Navegación */
         header { 
             border-bottom: 1px solid var(--border); 
-            background: rgba(11, 15, 23, 0.95); 
-            backdrop-filter: blur(12px); 
+            background: rgba(8, 11, 17, 0.85); 
+            backdrop-filter: blur(16px); 
             position: sticky; 
             top: 0; 
             z-index: 100; 
@@ -42,75 +72,111 @@
             padding: 0.8rem 2rem; 
         }
         
-        /* Logo integrado por código (Horizontal y Sin Recuadro) */
+        /* Contenedor del Logo Vertical */
         .logo-container { 
             display: flex; 
+            flex-direction: column; 
             align-items: center; 
-            gap: 14px; 
+            justify-content: center;
             text-decoration: none; 
-            padding: 4px 0;
+            padding: 8px 16px;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        /* Rombo SVG vectorizado con los colores exactos de Clipedia */
+        /* Resplandor suave del logo */
+        .logo-container::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(8, 11, 17, 0) 70%);
+            filter: blur(12px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        /* SVG HD Alta DefiniciónVectorial Nítido */
         .logo-icon {
             width: 48px;
             height: 48px;
             flex-shrink: 0;
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3));
+            z-index: 1;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6));
+            margin-bottom: 2px;
         }
 
-        /* Texto Clipedia integrado perfectamente sin parches */
+        /* Texto Clipedia */
         .logo-text {
             color: #ffffff;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
             line-height: 1;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            z-index: 1;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
         }
         .logo-text .reg {
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             vertical-align: super;
             font-weight: 400;
-            opacity: 0.7;
-            margin-left: 1px;
+            opacity: 0.85;
+            margin-left: 2px;
         }
 
-        /* Enlaces del Menú en Blanco Puro con Hover Calipso */
-        .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+        /* Enlaces del Menú */
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a { 
-            color: #ffffff;             /* Letras blancas puras sin pasar el ratón */
+            color: #ffffff;
             text-decoration: none; 
-            font-size: 1.05rem; 
+            font-size: 1rem; 
             font-weight: 600; 
-            transition: color 0.2s ease; 
+            transition: color 0.2s ease, text-shadow 0.2s; 
         }
         .nav-links a:hover { 
-            color: var(--accent);       /* Cambia a celeste/calipso al poner la flecha del ratón */
+            color: var(--accent);
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
         }
         
-        .lang-switch { 
+        /* Select de Idioma */
+        .lang-select { 
             border: 1px solid var(--border-accent); 
-            padding: 0.5rem 1.1rem; 
-            border-radius: 6px; 
-            font-size: 0.9rem; 
+            padding: 0.4rem 0.8rem; 
+            border-radius: 8px; 
+            font-size: 0.85rem; 
             font-weight: 700;
             color: #ffffff; 
-            background: rgba(2, 132, 199, 0.2); 
+            background: rgba(2, 132, 199, 0.25); 
             cursor: pointer; 
+            outline: none;
             transition: all 0.2s; 
         }
-        .lang-switch:hover { background: var(--accent); color: #000000; }
+        .lang-select:hover { background: var(--accent); color: #000000; }
+        .lang-select option { background: #0b0f17; color: #ffffff; }
+
+        /* Support for Right to Left (Hebrew) */
+        [dir="rtl"] .nav-links { flex-direction: row-reverse; }
+        [dir="rtl"] .card ul li { padding-left: 0; padding-right: 1.2rem; }
+        [dir="rtl"] .card ul li::before { left: auto; right: 0; }
         
         /* Hero Section */
         .hero { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem 4rem 2rem; text-align: center; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--text-main); }
+        .hero h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--text-main); }
         .hero h1 span { 
             background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
+            filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.3));
         }
-        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 780px; margin: 0 auto 2.5rem auto; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 780px; margin: 0 auto 2.5rem auto; }
+        
         .cta-btn { 
             display: inline-block; 
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); 
@@ -122,16 +188,17 @@
             transition: transform 0.2s, box-shadow 0.2s; 
             box-shadow: 0 4px 20px var(--accent-glow); 
         }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(56, 189, 248, 0.4); }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5); }
 
-        /* Servicios */
+        /* Servicios & Cards con Efecto Cristal Tarjeta */
         .section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
         .section-title { font-size: 2.2rem; margin-bottom: 0.5rem; text-align: center; color: var(--text-main); }
-        .section-subtitle { color: var(--text-muted); text-align: center; margin-bottom: 3.5rem; font-size: 1.1rem; }
+        .section-subtitle { color: var(--text-muted); text-align: center; margin-bottom: 3.5rem; font-size: 1.05rem; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
         .card { 
             background: var(--card-bg); 
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border); 
             border-radius: 14px; 
             padding: 2.5rem; 
@@ -144,37 +211,37 @@
             border-color: var(--accent); 
             background: var(--card-bg-hover);
             transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); 
         }
-        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
+        .card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--accent); }
         .card p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
         .card ul { list-style: none; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
         .card ul li { margin-bottom: 0.6rem; padding-left: 1.2rem; position: relative; }
         .card ul li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
 
-        .card-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; text-decoration: none; margin-top: 1rem; font-size: 0.95rem; transition: gap 0.2s; }
-        .card-link:hover { gap: 0.8rem; text-decoration: underline; }
+        .card-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; text-decoration: none; margin-top: 1rem; font-size: 0.95rem; }
+        .card-link:hover { text-decoration: underline; }
 
-        /* Secciones de Detalles */
-        .detail-section { background: #070a0f; border-top: 1px solid var(--border); padding: 5rem 2rem; }
+        /* Detalles Técnicos */
+        .detail-section { background: rgba(5, 7, 12, 0.8); border-top: 1px solid var(--border); padding: 5rem 2rem; }
         .detail-container { 
             max-width: 1000px; 
             margin: 0 auto 3rem auto; 
             background: var(--card-bg); 
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border); 
             border-radius: 16px; 
             padding: 3rem; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
         }
         .detail-container h3 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 1rem; }
         .detail-container p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1rem; }
         .detail-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .feature-box { background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border); }
+        .feature-box { background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border); }
         .feature-box h4 { font-size: 1.1rem; color: var(--accent); margin-bottom: 0.5rem; }
         .feature-box p { font-size: 0.9rem; margin-bottom: 0; color: var(--text-muted); }
 
         /* Contacto */
-        .contact-section { background: var(--bg-color); border-top: 1px solid var(--border); padding: 5rem 2rem; text-align: center; }
+        .contact-section { border-top: 1px solid var(--border); padding: 5rem 2rem; text-align: center; }
         .contact-info { display: flex; justify-content: center; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }
         .contact-item { 
             font-size: 1.1rem; 
@@ -192,7 +259,7 @@
         .contact-item span { color: var(--accent); font-weight: 600; }
         .contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
 
-        footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; background: #070a0f; }
+        footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; background: rgba(5, 7, 12, 0.95); }
     </style>
 </head>
 <body>
@@ -200,184 +267,282 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <!-- Rombo vectorizado en alta definición -->
-                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Franja 1: Azul Oscuro -->
-                    <polygon points="50,10 20,40 32,52 62,22" fill="#034ea2" />
-                    <!-- Franja 2: Azul Medio -->
-                    <polygon points="62,22 32,52 44,64 74,34" fill="#0072ce" />
-                    <!-- Franja 3: Azul Celeste -->
-                    <polygon points="74,34 44,64 56,76 86,46" fill="#38bdf8" />
+                <!-- SVG Vectorial Ultra Nítido (HD) -->
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#024596" />
+                            <stop offset="100%" stop-color="#0066c0" />
+                        </linearGradient>
+                        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0066c0" />
+                            <stop offset="100%" stop-color="#0284c7" />
+                        </linearGradient>
+                        <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0284c7" />
+                            <stop offset="100%" stop-color="#38bdf8" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Rombo de 3 láminas con alineación vectorial limpia -->
+                    <polygon points="50,12 20,42 32,54 62,24" fill="url(#g1)" />
+                    <polygon points="62,24 32,54 44,66 74,36" fill="url(#g2)" />
+                    <polygon points="74,36 44,66 56,78 86,48" fill="url(#g3)" />
                 </svg>
-                <!-- Nombre de la marca sin parches oscuros ni fondos -->
                 <span class="logo-text">Clipedia<span class="reg">&reg;</span></span>
             </a>
+            
             <ul class="nav-links">
-                <li><a href="#detalles-streaming" data-es="Streaming" data-en="Streaming">Streaming</a></li>
-                <li><a href="#detalles-ia" data-es="Contenido IA" data-en="AI Content">Contenido IA</a></li>
-                <li><a href="#detalles-auto" data-es="Automatización" data-en="Automation">Automatización</a></li>
-                <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
-                <li><button class="lang-switch" id="langBtn" onclick="toggleLanguage()">EN</button></li>
+                <li><a href="#detalles-streaming" id="nav-1">Streaming</a></li>
+                <li><a href="#detalles-ia" id="nav-2">Contenido IA</a></li>
+                <li><a href="#detalles-auto" id="nav-3">Automatización</a></li>
+                <li><a href="#contacto" id="nav-4">Contacto</a></li>
+                <li>
+                    <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+                        <option value="es">ES (Español)</option>
+                        <option value="en">EN (English)</option>
+                        <option value="fr">FR (Français)</option>
+                        <option value="he">HE (עברית)</option>
+                    </select>
+                </li>
             </ul>
         </div>
     </header>
 
     <section class="hero">
-        <h1 data-es="Transformación Multimedia y &lt;span&gt;Automatización Inteligente&lt;/span&gt;" data-en="Multimedia Transformation &lt;span&gt;Intelligent Automation&lt;/span&gt;">
-            Transformación Multimedia y <span>Automatización Inteligente</span>
-        </h1>
-        <p data-es="Unificamos la producción audiovisual en directo de alta gama con el desarrollo de agentes virtuales, páginas web con IA y la optimización de procesos corporativos." data-en="We unify high-end live audiovisual production with virtual agent development, AI-powered websites, and corporate process optimization.">
-            Unificamos la producción audiovisual en directo de alta gama con el desarrollo de agentes virtuales, páginas web con IA y la optimización de procesos corporativos.
-        </p>
-        <a href="#contacto" class="cta-btn" data-es="Iniciar Proyecto" data-en="Start Project">Iniciar Proyecto</a>
+        <h1 id="hero-title">Transformación Multimedia y <span>Automatización Inteligente</span></h1>
+        <p id="hero-desc">Unificamos la producción audiovisual en directo de alta gama con el desarrollo de agentes virtuales, páginas web con IA y la optimización de procesos corporativos.</p>
+        <a href="#contacto" class="cta-btn" id="hero-cta">Iniciar Proyecto</a>
     </section>
 
-    <!-- Resumen de Servicios -->
     <section class="section" id="servicios">
-        <h2 class="section-title" data-es="Soluciones Tecnológicas Integradas" data-en="Integrated Technology Solutions">Soluciones Tecnológicas Integradas</h2>
-        <p class="section-subtitle" data-es="Seleccione una línea de servicio para consultar las especificaciones técnicas" data-en="Select a service line to view technical specifications">Seleccione una línea de servicio para consultar las especificaciones técnicas</p>
+        <h2 class="section-title" id="sec-title">Soluciones Tecnológicas Integradas</h2>
+        <p class="section-subtitle" id="sec-sub">Seleccione una línea de servicio para consultar las especificaciones técnicas</p>
         
         <div class="grid">
             <div class="card">
                 <div>
-                    <h3 data-es="Streaming TuDirecto & Realización" data-en="TuDirecto Streaming & Production">Streaming TuDirecto & Realización</h3>
-                    <p data-es="Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad broadcast." data-en="Professional multi-camera broadcasts for corporate and hybrid events with broadcast quality.">Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad broadcast.</p>
+                    <h3 id="card1-title">Streaming TuDirecto & Realización</h3>
+                    <p id="card1-desc">Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad broadcast.</p>
                     <ul>
-                        <li data-es="Realización técnica en directo avanzada." data-en="Advanced live technical direction.">Realización técnica en directo avanzada.</li>
-                        <li data-es="Estabilidad de emisión y codificación profesional." data-en="Emission stability and professional encoding.">Estabilidad de emisión y codificación profesional.</li>
+                        <li id="card1-l1">Realización técnica en directo avanzada.</li>
+                        <li id="card1-l2">Estabilidad de emisión y codificación profesional.</li>
                     </ul>
                 </div>
-                <a href="#detalles-streaming" class="card-link" data-es="Ampliar detalles de Streaming &rarr;" data-en="View Streaming details &rarr;">Ampliar detalles de Streaming &rarr;</a>
+                <a href="#detalles-streaming" class="card-link" id="card1-link">Ampliar detalles de Streaming &rarr;</a>
             </div>
 
             <div class="card">
                 <div>
-                    <h3 data-es="Creación de Contenido & Vídeo IA" data-en="Content Creation & AI Video">Creación de Contenido & Vídeo IA</h3>
-                    <p data-es="Producción publicitaria, edición profesional y generación sintética de imagen y vídeo." data-en="Advertising production, professional editing, and synthetic image/video generation.">Producción publicitaria, edición profesional y generación sintética de imagen y vídeo.</p>
+                    <h3 id="card2-title">Creación de Contenido & Vídeo IA</h3>
+                    <p id="card2-desc">Producción publicitaria, edición profesional y generación sintética de imagen y vídeo.</p>
                     <ul>
-                        <li data-es="Spots y motion graphics avanzados." data-en="Spots and advanced motion graphics.">Spots y motion graphics avanzados.</li>
-                        <li data-es="Upscaling y optimización mediante IA." data-en="AI upscaling and optimization.">Upscaling y optimización mediante IA.</li>
+                        <li id="card2-l1">Spots y motion graphics avanzados.</li>
+                        <li id="card2-l2">Upscaling y optimización mediante IA.</li>
                     </ul>
                 </div>
-                <a href="#detalles-ia" class="card-link" data-es="Ampliar detalles de Contenido IA &rarr;" data-en="View AI Content details &rarr;">Ampliar detalles de Contenido IA &rarr;</a>
+                <a href="#detalles-ia" class="card-link" id="card2-link">Ampliar detalles de Contenido IA &rarr;</a>
             </div>
 
             <div class="card">
                 <div>
-                    <h3 data-es="Automatización, Web y Agentes IA" data-en="Automation, Web & AI Agents">Automation, Web & AI Agents</h3>
-                    <p data-es="Desarrollo web corporativo e integración de agentes virtuales autónomos." data-en="Corporate web development and integration of autonomous virtual agents.">Desarrollo web corporativo e integración de agentes virtuales autónomos.</p>
+                    <h3 id="card3-title">Automatización, Web y Agentes IA</h3>
+                    <p id="card3-desc">Desarrollo web corporativo e integración de agentes virtuales autónomos.</p>
                     <ul>
-                        <li data-es="Asistentes virtuales y chatbots inteligentes." data-en="Virtual assistants and smart chatbots.">Asistentes virtuales y chatbots inteligentes.</li>
-                        <li data-es="Optimización de flujos y procesos internos." data-en="Internal workflows and process optimization.">Optimización de flujos y procesos internos.</li>
+                        <li id="card3-l1">Asistentes virtuales y chatbots inteligentes.</li>
+                        <li id="card3-l2">Optimización de flujos y procesos internos.</li>
                     </ul>
                 </div>
-                <a href="#detalles-auto" class="card-link" data-es="Ampliar detalles de Automatización &rarr;" data-en="View Automation details &rarr;">Ampliar detalles de Automatización &rarr;</a>
+                <a href="#detalles-auto" class="card-link" id="card3-link">Ampliar detalles de Automatización &rarr;</a>
             </div>
         </div>
     </section>
 
-    <!-- SECCIONES DE PROFUNDIDAD TÉCNICA -->
+    <!-- Detalles Técnicos -->
     <div class="detail-section">
-        
-        <!-- Detalle 1: Streaming -->
         <div class="detail-container" id="detalles-streaming">
-            <h3 data-es="Streaming TuDirecto & Realización" data-en="TuDirecto Streaming & Production">Streaming TuDirecto & Realización</h3>
-            <p data-es="Despliegue técnico integral para que cualquier evento corporativo, conferencia o retransmisión híbrida alcance estándares de televisión profesional. Control absoluto sobre el pipeline de vídeo y sonido en directo." data-en="End-to-end technical deployment so that any corporate event, conference, or hybrid broadcast reaches professional television standards. Complete control over the live video and sound pipeline.">Despliegue técnico integral para que cualquier evento corporativo, conferencia o retransmisión híbrida alcance estándares de televisión profesional. Control absoluto sobre el pipeline de vídeo y sonido en directo.</p>
-            
+            <h3 id="d1-t">Streaming TuDirecto & Realización</h3>
+            <p id="d1-d">Despliegue técnico integral para que cualquier evento corporativo, conferencia o retransmisión híbrida alcance estándares de televisión profesional.</p>
             <div class="detail-features">
-                <div class="feature-box">
-                    <h4 data-es="Realización Multicámara" data-en="Multi-camera Direction">Realización Multicámara</h4>
-                    <p data-es="Coordinación de múltiples cámaras profesionales con conmutación en directo y transiciones de nivel broadcast." data-en="Coordination of multiple professional cameras with live switching and broadcast-level transitions.">Coordinación de múltiples cámaras profesionales con conmutación en directo y transiciones de nivel broadcast.</p>
-                </div>
-                <div class="feature-box">
-                    <h4 data-es="Codificación Robusta" data-en="Robust Encoding">Codificación Robusta</h4>
-                    <p data-es="Uso de equipos de codificación dedicados y pasarelas de red con redundancia para garantizar estabilidad." data-en="Use of dedicated encoding hardware and redundant network gateways to ensure stability.">Uso de equipos de codificación dedicados y pasarelas de red con redundancia para garantizar estabilidad.</p>
-                </div>
-                <div class="feature-box">
-                    <h4 data-es="Sonido Profesional" data-en="Professional Audio">Sonido Profesional</h4>
-                    <p data-es="Captación y mezcla de audio optimizada para ponencias presenciales e intervenciones remotas." data-en="Optimized audio capture and mixing for onsite lectures and remote interventions.">Captación y mezcla de audio optimizada para ponencias presenciales e intervenciones remotas.</p>
-                </div>
+                <div class="feature-box"><h4 id="d1-f1-t">Realización Multicámara</h4><p id="d1-f1-d">Coordinación de múltiples cámaras profesionales con conmutación en directo.</p></div>
+                <div class="feature-box"><h4 id="d1-f2-t">Codificación Robusta</h4><p id="d1-f2-d">Uso de equipos de codificación dedicados y pasarelas de red con redundancia.</p></div>
+                <div class="feature-box"><h4 id="d1-f3-t">Sonido Profesional</h4><p id="d1-f3-d">Captación y mezcla de audio optimizada para ponencias presenciales.</p></div>
             </div>
         </div>
 
-        <!-- Detalle 2: Contenido IA -->
         <div class="detail-container" id="detalles-ia">
-            <h3 data-es="Creación de Contenido & Vídeo IA" data-en="Content Creation & AI Video">Creación de Contenido & Vídeo IA</h3>
-            <p data-es="Fusión entre técnicas de postproducción cinematográfica tradicional y flujos de trabajo avanzados de Inteligencia Artificial para potenciar la identidad visual de marca." data-en="Fusion between traditional cinematic post-production techniques and advanced Artificial Intelligence workflows to enhance brand visual identity.">Fusión entre técnicas de postproducción cinematográfica tradicional y flujos de trabajo avanzados de Inteligencia Artificial para potenciar la identidad visual de marca.</p>
-            
+            <h3 id="d2-t">Creación de Contenido & Vídeo IA</h3>
+            <p id="d2-d">Fusión entre técnicas de postproducción cinematográfica tradicional y flujos de trabajo avanzados de Inteligencia Artificial.</p>
             <div class="detail-features">
-                <div class="feature-box">
-                    <h4 data-es="Upscaling y Mejora Algorítmica" data-en="Upscaling & Algorithmic Enhancement">Upscaling y Mejora Algorítmica</h4>
-                    <p data-es="Procesamiento y restauración de resolución en brutos de cámara o archivos históricos hasta calidad 4K." data-en="Processing and resolution restoration in camera raw files or legacy footage up to 4K quality.">Procesamiento y restauración de resolución en brutos de cámara o archivos históricos hasta calidad 4K.</p>
-                </div>
-                <div class="feature-box">
-                    <h4 data-es="Spots y Formatos Verticales" data-en="Spots & Vertical Formats">Spots y Formatos Verticales</h4>
-                    <p data-es="Edición dinámica orientada a campañas publicitarias de alto impacto en plataformas digitales." data-en="Dynamic editing focused on high-impact advertising campaigns on digital platforms.">Edición dinámica orientada a campañas publicitarias de alto impacto en plataformas digitales.</p>
-                </div>
-                <div class="feature-box">
-                    <h4 data-es="Motion Graphics" data-en="Motion Graphics">Motion Graphics</h4>
-                    <p data-es="Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual." data-en="Animations and motion design harmoniously integrated into the audiovisual narrative.">Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual.</p>
-                </div>
+                <div class="feature-box"><h4 id="d2-f1-t">Upscaling Algorítmico</h4><p id="d2-f1-d">Procesamiento y restauración de resolución en archivos hasta calidad 4K.</p></div>
+                <div class="feature-box"><h4 id="d2-f2-t">Spots Verticales</h4><p id="d2-f2-d">Edición dinámica orientada a campañas publicitarias de alto impacto.</p></div>
+                <div class="feature-box"><h4 id="d2-f3-t">Motion Graphics</h4><p id="d2-f3-d">Animaciones y diseño gráfico en movimiento integrados.</p></div>
             </div>
         </div>
 
-        <!-- Detalle 3: Automatización -->
         <div class="detail-container" id="detalles-auto">
-            <h3 data-es="Automatización, Web y Agentes IA" data-en="Automation, Web & AI Agents">Automatización, Web y Agentes IA</h3>
-            <p data-es="Desarrollo de entornos web corporativos de alto rendimiento e integración de agentes virtuales autónomos orientados a la optimización operativa." data-en="Development of high-performance corporate web environments and integration of autonomous virtual agents aimed at operational optimization.">Desarrollo de entornos web corporativos de alto rendimiento e integración de agentes virtuales autónomos orientados a la optimización operativa.</p>
-            
+            <h3 id="d3-t">Automatización, Web y Agentes IA</h3>
+            <p id="d3-d">Desarrollo de entornos web corporativos de alto rendimiento e integración de agentes virtuales autónomos.</p>
             <div class="detail-features">
-                <div class="feature-box">
-                    <h4 data-es="Asistentes Virtuales" data-en="Virtual Assistants">Asistentes Virtuales</h4>
-                    <p data-es="Implementación de soluciones conversacionales inteligentes para soporte y cualificación de leads." data-en="Implementation of smart conversational solutions for support and lead qualification.">Implementación de soluciones conversacionales inteligentes para soporte y cualificación de leads.</p>
-                </div>
-                <div class="feature-box">
-                    <h4 data-es="Desarrollo Web Ágil" data-en="Agile Web Development">Desarrollo Web Ágil</h4>
-                    <p data-es="Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo." data-en="Modern, lightweight web architectures, optimized for conversion and adapted to any device.">Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo.</p>
-                </div>
-                <div class="feature-box">
-                    <h4 data-es="Optimización de Procesos" data-en="Process Optimization">Optimización de Procesos</h4>
-                    <p data-es="Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas." data-en="Systematization of internal tasks through intelligent connection of corporate tools.">Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas.</p>
-                </div>
+                <div class="feature-box"><h4 id="d3-f1-t">Asistentes Virtuales</h4><p id="d3-f1-d">Implementación de soluciones conversacionales inteligentes para soporte.</p></div>
+                <div class="feature-box"><h4 id="d3-f2-t">Desarrollo Web Ágil</h4><p id="d3-f2-d">Arquitecturas web modernas, ligeras y optimizadas para conversión.</p></div>
+                <div class="feature-box"><h4 id="d3-f3-t">Optimización Interna</h4><p id="d3-f3-d">Sistematización de tareas internas conectando herramientas corporativas.</p></div>
             </div>
         </div>
-
     </div>
 
-    <!-- Sección de Contacto -->
+    <!-- Contacto -->
     <section class="contact-section" id="contacto">
-        <h2 class="section-title" data-es="Contacto Profesional" data-en="Professional Contact">Contacto Profesional</h2>
-        <p class="section-subtitle" data-es="Atención directa para consultoría técnica y coordinación de proyectos." data-en="Direct assistance for technical consulting and project coordination.">Atención directa para consultoría técnica y coordinación de proyectos.</p>
+        <h2 class="section-title" id="c-t">Contacto Profesional</h2>
+        <p class="section-subtitle" id="c-s">Atención directa para consultoría técnica y coordinación de proyectos.</p>
         <div class="contact-info">
-            <a href="tel:+34614218154" class="contact-item">
-                <span>Teléfono:</span> +34 614 218 154
-            </a>
-            <a href="mailto:info@clipedia.com" class="contact-item">
-                <span>Correo:</span> info@clipedia.com
-            </a>
+            <a href="tel:+34614218154" class="contact-item"><span id="c-p">Teléfono:</span> +34 614 218 154</a>
+            <a href="mailto:info@clipedia.com" class="contact-item"><span id="c-e">Correo:</span> info@clipedia.com</a>
         </div>
     </section>
 
     <footer>
-        <p data-es="&copy; 2026 Clipedia. Todos los derechos reservados." data-en="&copy; 2026 Clipedia. All rights reserved.">&copy; 2026 Clipedia. Todos los derechos reservados.</p>
+        <p id="foot">&copy; 2026 Clipedia. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- DICCIONARIO TRADUCTOR MULTI-IDIOMA -->
     <script>
-        let currentLang = 'es';
+        const translations = {
+            es: {
+                dir: 'ltr',
+                nav1: "Streaming", nav2: "Contenido IA", nav3: "Automatización", nav4: "Contacto",
+                heroTitle: "Transformación Multimedia y <span>Automatización Inteligente</span>",
+                heroDesc: "Unificamos la producción audiovisual en directo de alta gama con el desarrollo de agentes virtuales, páginas web con IA y la optimización de procesos corporativos.",
+                heroCta: "Iniciar Proyecto",
+                secTitle: "Soluciones Tecnológicas Integradas",
+                secSub: "Seleccione una línea de servicio para consultar las especificaciones técnicas",
+                card1T: "Streaming TuDirecto & Realización", card1D: "Retransmisiones multicámara profesionales para eventos corporativos e híbridos con calidad broadcast.", card1L1: "Realización técnica en directo avanzada.", card1L2: "Estabilidad de emisión y codificación profesional.", card1Link: "Ampliar detalles de Streaming &rarr;",
+                card2T: "Creación de Contenido & Vídeo IA", card2D: "Producción publicitaria, edición profesional y generación sintética de imagen y vídeo.", card2L1: "Spots y motion graphics avanzados.", card2L2: "Upscaling y optimización mediante IA.", card2Link: "Ampliar detalles de Contenido IA &rarr;",
+                card3T: "Automatización, Web y Agentes IA", card3D: "Desarrollo web corporativo e integración de agentes virtuales autónomos.", card3L1: "Asistentes virtuales y chatbots inteligentes.", card3L2: "Optimización de flujos y procesos internos.", card3Link: "Ampliar detalles de Automatización &rarr;",
+                d1T: "Streaming TuDirecto & Realización", d1D: "Despliegue técnico integral para que cualquier evento corporativo o retransmisión híbrida alcance estándares de televisión profesional.", d1f1t: "Realización Multicámara", d1f1d: "Coordinación de múltiples cámaras profesionales con conmutación en directo.", d1f2t: "Codificación Robusta", d1f2d: "Uso de equipos de codificación dedicados y pasarelas de red con redundancia.", d1f3t: "Sonido Profesional", d1f3d: "Captación y mezcla de audio optimizada para ponencias presenciales.",
+                d2T: "Creación de Contenido & Vídeo IA", d2D: "Fusión entre técnicas de postproducción cinematográfica tradicional y flujos de trabajo avanzados de IA.", d2f1t: "Upscaling Algorítmico", d2f1d: "Procesamiento y restauración de resolución en archivos hasta calidad 4K.", d2f2t: "Spots Verticales", d2f2d: "Edición dinámica orientada a campañas publicitarias de alto impacto.", d2f3t: "Motion Graphics", d2f3d: "Animaciones y diseño gráfico en movimiento integrados.",
+                d3T: "Automatización, Web y Agentes IA", d3D: "Desarrollo de entornos web corporativos de alto rendimiento e integración de agentes virtuales autónomos.", d3f1t: "Asistentes Virtuales", d3f1d: "Implementación de soluciones conversacionales inteligentes para soporte.", d3f2t: "Desarrollo Web Ágil", d3f2d: "Arquitecturas web modernas, ligeras y optimizadas para conversión.", d3f3t: "Optimización Interna", d3f3d: "Sistematización de tareas internas conectando herramientas corporativas.",
+                cT: "Contacto Profesional", cS: "Atención directa para consultoría técnica y coordinación de proyectos.", cP: "Teléfono:", cE: "Correo:", foot: "&copy; 2026 Clipedia. Todos los derechos reservados."
+            },
+            en: {
+                dir: 'ltr',
+                nav1: "Streaming", nav2: "AI Content", nav3: "Automation", nav4: "Contact",
+                heroTitle: "Multimedia Transformation & <span>Intelligent Automation</span>",
+                heroDesc: "We unify high-end live audiovisual production with virtual agent development, AI web apps, and corporate process optimization.",
+                heroCta: "Start Project",
+                secTitle: "Integrated Tech Solutions",
+                secSub: "Select a service line to view technical specifications",
+                card1T: "TuDirecto Streaming & Production", card1D: "Professional multi-camera broadcasts for corporate and hybrid events with broadcast quality.", card1L1: "Advanced live technical direction.", card1L2: "Broadcast stability and professional encoding.", card1Link: "View Streaming details &rarr;",
+                card2T: "Content Creation & AI Video", card2D: "Advertising production, professional editing, and synthetic image/video generation.", card2L1: "Spots and advanced motion graphics.", card2L2: "AI-powered upscaling and optimization.", card2Link: "View AI Content details &rarr;",
+                card3T: "Automation, Web & AI Agents", card3D: "Corporate web development and integration of autonomous virtual agents.", card3L1: "Virtual assistants and smart chatbots.", card3L2: "Internal workflow and process optimization.", card3Link: "View Automation details &rarr;",
+                d1T: "TuDirecto Streaming & Production", d1D: "Comprehensive technical deployment for corporate events and hybrid broadcasts to reach TV broadcast standards.", d1f1t: "Multi-Camera Production", d1f1d: "Coordination of multiple professional cameras with live switching.", d1f2t: "Robust Encoding", d1f2d: "Use of dedicated hardware encoders and redundant network gateways.", d1f3t: "Professional Audio", d1f3d: "Optimized sound capture and mixing for live presentations.",
+                d2T: "Content Creation & AI Video", d2D: "Fusion of traditional cinematic post-production and advanced AI workflows.", d2f1t: "Algorithmic Upscaling", d2f1d: "Resolution enhancement and restoration up to 4K quality.", d2f2t: "Vertical Formats", d2f2d: "Dynamic video editing optimized for high-impact social media ads.", d2f3t: "Motion Graphics", d2f3d: "Integrated vector animation and motion graphics design.",
+                d3T: "Automation, Web & AI Agents", d3D: "Development of high-performance corporate web applications and autonomous AI agents.", d3f1t: "Virtual Assistants", d3f1d: "Deployment of smart conversational solutions for automated customer support.", d3f2t: "Agile Web Development", d3f2d: "Modern, lightweight, and conversion-optimized web architecture.", d3f3t: "Process Optimization", d3f3d: "Internal task automation connecting corporate software ecosystems.",
+                cT: "Professional Contact", cS: "Direct assistance for technical consulting and project management.", cP: "Phone:", cE: "Email:", foot: "&copy; 2026 Clipedia. All rights reserved."
+            },
+            fr: {
+                dir: 'ltr',
+                nav1: "Streaming", nav2: "Contenu IA", nav3: "Automatisation", nav4: "Contact",
+                heroTitle: "Transformation Multimedia et <span>Automatisation Intelligente</span>",
+                heroDesc: "Nous unissons la production audiovisuelle en direct haut de gamme au développement d'agents virtuels et à l'optimisation des processus.",
+                heroCta: "Démarrer un Projet",
+                secTitle: "Solutions Technologiques Intégrées",
+                secSub: "Sélectionnez un service pour consulter les spécifications techniques",
+                card1T: "Streaming TuDirecto & Réalisation", card1D: "Retransmissions multicaméras professionnelles pour événements d'entreprise de qualité broadcast.", card1L1: "Réalisation technique en direct avancée.", card1L2: "Stabilité d'émission et encodage professionnel.", card1Link: "Détails du Streaming &rarr;",
+                card2T: "Création de Contenu & Vidéo IA", card2D: "Production publicitaire, montage professionnel et génération synthétique d'images et vidéos.", card2L1: "Spots et motion graphics avancés.", card2L2: "Upscaling et optimisation via IA.", card2Link: "Détails du Contenu IA &rarr;",
+                card3T: "Automatisation, Web & Agents IA", card3D: "Développement web d'entreprise et intégration d'agents virtuels autonomes.", card3L1: "Assistants virtuels et chatbots intelligents.", card3L2: "Optimisation des flux et processus internes.", card3Link: "Détails de l'Automatisation &rarr;",
+                d1T: "Streaming TuDirecto & Réalisation", d1D: "Déploiement technique complet pour que vos événements atteignent des standards télévisuels.", d1f1t: "Réalisation Multicaméra", d1f1d: "Coordination de caméras professionnelles avec commutation en direct.", d1f2t: "Encodage Robuste", d1f2d: "Utilisation d'équipements d'encodage dédiés et réseaux redondants.", d1f3t: "Son Professionnel", d1f3d: "Capture et mixage audio optimisés pour conférences.",
+                d2T: "Création de Contenu & Vidéo IA", d2D: "Fusion entre post-production cinématographique et workflows IA avancés.", d2f1t: "Upscaling Algorithmique", d2f1d: "Restauration et amélioration de résolution jusqu'en 4K.", d2f2t: "Formats Verticaux", d2f2d: "Montage dynamique pour campagnes publicitaires à fort impact.", d2f3t: "Motion Graphics", d2f3d: "Animations et design graphique intégrés.",
+                d3T: "Automatisation, Web & Agents IA", d3D: "Développement web haute performance et intégration d'agents IA autonomes.", d3f1t: "Assistants Virtuels", d3f1d: "Solutions conversationnelles intelligentes pour le support.", d3f2t: "Développement Web Agile", d3f2d: "Architectures web modernes optimisées pour la conversion.", d3f3t: "Optimisation Interne", d3f3d: "Sistématisation des tâches interconnectant vos outils.",
+                cT: "Contact Professionnel", cS: "Assistance directe pour conseil technique et coordination de projets.", cP: "Téléphone:", cE: "E-mail:", foot: "&copy; 2026 Clipedia. Tous droits réservés."
+            },
+            he: {
+                dir: 'rtl',
+                nav1: "שידור חי", nav2: "תוכן AI", nav3: "אוטומציה", nav4: "צור קשר",
+                heroTitle: "טרנספורמציית מולטימדיה ו<span>אוטומציה חכמה</span>",
+                heroDesc: "אנו משלבים הפקת וידאו חי באיכות גבוהה עם פיתוח סוכנים וירטואליים, אתרי AI ואופטימיזציה של תהליכים עסקיים.",
+                heroCta: "התחל פרויקט",
+                secTitle: "פתרונות טכנולוגיים משולבים",
+                secSub: "בחר שירות לעיון במפרט הטכני",
+                card1T: "שידור חי TuDirecto והפקה", card1D: "שידורים מקצועיים מרובי מצלמות לאירועים עסקיים באיכות שידור גבוהה.", card1L1: "בימוי טכני מתקדם בזמן אמת.", card1L2: "יציבות שידור וקידוד מקצועי.", card1Link: "לפרטי השידור החי &larr;",
+                card2T: "יצירת תוכן ווידאו AI", card2D: "הפקת פרסומות, עריכה מקצועית ויצירת תמונות ווידאו באמצעות בינה מלאכותית.", card2L1: "פרסומות ואנימציות מתקדמות.", card2L2: "שדרוג איכות וידאו ואופטימיזציה.", card2Link: "לפרטי תוכן AI &larr;",
+                card3T: "אוטומציה, אתרים וסוכני AI", card3D: "פיתוח אתרים עסקיים ושילוב סוכנים וירטואליים אוטונומיים.", card3L1: "עוזרים וירטואליים וצ'אטבוטים חכמים.", card3L2: "אופטימיזציה של תהליכים פנימיים.", card3Link: "לפרטי האוטומציה &larr;",
+                d1T: "שידור חי TuDirecto והפקה", d1D: "פריסה טכנית מקיפה לאירועים עסקיים להשגת תקני שידור טלוויזיה מקצועיים.", d1f1t: "הפקה מרובת מצלמות", d1f1d: "תיאום מצלמות מקצועיות בזמן אמת.", d1f2t: "קידוד עוצמתי", d1f2d: "שימוש בציוד קידוד ייעודי ורשתות גיבוי.", d1f3t: "סאונד מקצועי", d1f3d: "הקלטה ומיקס סאונד מותאם להרצאות.",
+                d2T: "יצירת תוכן ווידאו AI", d2D: "שילוב בין עריכת וידאו קולנועית לבין טכנולוגיות בינה מלאכותית מתקדמות.", d2f1t: "שדרוג איכות אלגוריתמי", d2f1d: "שיפור רזולוציה ושחזור קבצים עד לאיכות 4K.", d2f2t: "פורמטים אנכיים", d2f2d: "עריכה דינמית לקמפיינים ברשתות החברתיות.", d2f3t: "אנימציה וגרפטיקה", d2f3d: "עיצוב גרפי בתנועה המשולב בווידאו.",
+                d3T: "אוטומציה, אתרים וסוכני AI", d3D: "פיתוח אתרים מהירים ושילוב סוכני AI אוטונומיים לייעול העסק.", d3f1t: "עוזרים וירטואליים", d3f1d: "פתרונות שיחה חכמים לתמיכה ושירות לקוחות.", d3f2t: "פיתוח אתרים מתקדם", d3f2d: "ארכיטקטורת רשת מודרנית ומהירה.", d3f3t: "ייעול תהליכים פנימיים", d3f3d: "אוטומציה של משימות וארגון תהליכי עבודה.",
+                cT: "יצירת קשר מקצועי", cS: "ייעוץ טכני ותיאום פרויקטים ישיר.", cP: "טלפון:", cE: "דוא\"ל:", foot: "&copy; 2026 Clipedia. כל הזכויות שמורות."
+            }
+        };
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.getElementById('html-root').setAttribute('lang', currentLang);
-            document.getElementById('langBtn').innerText = currentLang === 'es' ? 'EN' : 'ES';
+        function changeLanguage(lang) {
+            const data = translations[lang];
+            const root = document.getElementById('html-root');
+            
+            /* Ajustar orientación de texto para Hebreo (RTL) */
+            root.setAttribute('lang', lang);
+            root.setAttribute('dir', data.dir);
 
-            const elements = document.querySelectorAll('[data-es]');
-            elements.forEach(el => {
-                if (currentLang === 'en') {
-                    el.innerHTML = el.getAttribute('data-en');
-                } else {
-                    el.innerHTML = el.getAttribute('data-es');
-                }
-            });
+            document.getElementById('nav-1').innerText = data.nav1;
+            document.getElementById('nav-2').innerText = data.nav2;
+            document.getElementById('nav-3').innerText = data.nav3;
+            document.getElementById('nav-4').innerText = data.nav4;
+
+            document.getElementById('hero-title').innerHTML = data.heroTitle;
+            document.getElementById('hero-desc').innerText = data.heroDesc;
+            document.getElementById('hero-cta').innerText = data.heroCta;
+
+            document.getElementById('sec-title').innerText = data.secTitle;
+            document.getElementById('sec-sub').innerText = data.secSub;
+
+            document.getElementById('card1-title').innerText = data.card1T;
+            document.getElementById('card1-desc').innerText = data.card1D;
+            document.getElementById('card1-l1').innerText = data.card1L1;
+            document.getElementById('card1-l2').innerText = data.card1L2;
+            document.getElementById('card1-link').innerHTML = data.card1Link;
+
+            document.getElementById('card2-title').innerText = data.card2T;
+            document.getElementById('card2-desc').innerText = data.card2D;
+            document.getElementById('card2-l1').innerText = data.card2L1;
+            document.getElementById('card2-l2').innerText = data.card2L2;
+            document.getElementById('card2-link').innerHTML = data.card2Link;
+
+            document.getElementById('card3-title').innerText = data.card3T;
+            document.getElementById('card3-desc').innerText = data.card3D;
+            document.getElementById('card3-l1').innerText = data.card3L1;
+            document.getElementById('card3-l2').innerText = data.card3L2;
+            document.getElementById('card3-link').innerHTML = data.card3Link;
+
+            document.getElementById('d1-t').innerText = data.d1T;
+            document.getElementById('d1-d').innerText = data.d1D;
+            document.getElementById('d1-f1-t').innerText = data.d1f1t;
+            document.getElementById('d1-f1-d').innerText = data.d1f1d;
+            document.getElementById('d1-f2-t').innerText = data.d1f2t;
+            document.getElementById('d1-f2-d').innerText = data.d1f2d;
+            document.getElementById('d1-f3-t').innerText = data.d1f3t;
+            document.getElementById('d1-f3-d').innerText = data.d1f3d;
+
+            document.getElementById('d2-t').innerText = data.d2T;
+            document.getElementById('d2-d').innerText = data.d2D;
+            document.getElementById('d2-f1-t').innerText = data.d2f1t;
+            document.getElementById('d2-f1-d').innerText = data.d2f1d;
+            document.getElementById('d2-f2-t').innerText = data.d2f2t;
+            document.getElementById('d2-f2-d').innerText = data.d2f2d;
+            document.getElementById('d2-f3-t').innerText = data.d2f3t;
+            document.getElementById('d2-f3-d').innerText = data.d2f3d;
+
+            document.getElementById('d3-t').innerText = data.d3T;
+            document.getElementById('d3-d').innerText = data.d3D;
+            document.getElementById('d3-f1-t').innerText = data.d3f1t;
+            document.getElementById('d3-f1-d').innerText = data.d3f1d;
+            document.getElementById('d3-f2-t').innerText = data.d3f2t;
+            document.getElementById('d3-f2-d').innerText = data.d3f2d;
+            document.getElementById('d3-f3-t').innerText = data.d3f3t;
+            document.getElementById('d3-f3-d').innerText = data.d3f3d;
+
+            document.getElementById('c-t').innerText = data.cT;
+            document.getElementById('c-s').innerText = data.cS;
+            document.getElementById('c-p').innerText = data.cP;
+            document.getElementById('c-e').innerText = data.cE;
+            document.getElementById('foot').innerHTML = data.foot;
         }
     </script>
 
