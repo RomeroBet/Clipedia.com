@@ -24,7 +24,7 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
         
-        /* Header / Navegación - Ampliado para dar espacio al logo de ~5cm */
+        /* Header / Navegación */
         header { 
             border-bottom: 1px solid var(--border); 
             background: rgba(11, 15, 23, 0.95); 
@@ -39,23 +39,41 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 1rem 2rem; 
+            padding: 0.8rem 2rem; 
         }
         
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        
-        /* Logo ampliado a aprox 5cm de alto (120px) */
-        .logo-img { 
-            height: 120px; 
-            width: auto; 
-            max-width: 380px; 
-            object-fit: contain; 
-            display: block; 
-            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.2)); 
-            transition: transform 0.2s ease;
+        /* Logo integrado por código (Horizontal y Sin Recuadro) */
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+            text-decoration: none; 
+            padding: 4px 0;
         }
-        .logo-img:hover {
-            transform: scale(1.02);
+        
+        /* Rombo SVG vectorizado con los colores exactos de Clipedia */
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3));
+        }
+
+        /* Texto Clipedia integrado perfectamente sin parches */
+        .logo-text {
+            color: #ffffff;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .logo-text .reg {
+            font-size: 0.8rem;
+            vertical-align: super;
+            font-weight: 400;
+            opacity: 0.7;
+            margin-left: 1px;
         }
 
         /* Enlaces del Menú en Blanco Puro con Hover Calipso */
@@ -182,7 +200,17 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <img src="clipedia%20logo%20web%20nuevo%20.jpg" alt="Clipedia" class="logo-img">
+                <!-- Rombo vectorizado en alta definición -->
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Franja 1: Azul Oscuro -->
+                    <polygon points="50,10 20,40 32,52 62,22" fill="#034ea2" />
+                    <!-- Franja 2: Azul Medio -->
+                    <polygon points="62,22 32,52 44,64 74,34" fill="#0072ce" />
+                    <!-- Franja 3: Azul Celeste -->
+                    <polygon points="74,34 44,64 56,76 86,46" fill="#38bdf8" />
+                </svg>
+                <!-- Nombre de la marca sin parches oscuros ni fondos -->
+                <span class="logo-text">Clipedia<span class="reg">&reg;</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="#detalles-streaming" data-es="Streaming" data-en="Streaming">Streaming</a></li>
@@ -288,7 +316,7 @@
                 </div>
                 <div class="feature-box">
                     <h4 data-es="Motion Graphics" data-en="Motion Graphics">Motion Graphics</h4>
-                    <p data-es="Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual." data-en="Animations and motion design harmoniously integrated into the audiovisual narrative.">Animations and motion design harmoniously integrated into the audiovisual narrative.</p>
+                    <p data-es="Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual." data-en="Animations and motion design harmoniously integrated into the audiovisual narrative.">Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual.</p>
                 </div>
             </div>
         </div>
@@ -305,7 +333,7 @@
                 </div>
                 <div class="feature-box">
                     <h4 data-es="Desarrollo Web Ágil" data-en="Agile Web Development">Desarrollo Web Ágil</h4>
-                    <p data-es="Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo." data-en="Modern, lightweight web architectures, optimized for conversion and adapted to any device.">Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a any device.</p>
+                    <p data-es="Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo." data-en="Modern, lightweight web architectures, optimized for conversion and adapted to any device.">Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo.</p>
                 </div>
                 <div class="feature-box">
                     <h4 data-es="Optimización de Procesos" data-en="Process Optimization">Optimización de Procesos</h4>
