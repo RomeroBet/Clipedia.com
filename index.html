@@ -11,10 +11,10 @@
             --bg-color: #0b0f17;
             --card-bg: #131b2e;
             --card-bg-hover: #1c2742;
-            --accent: #38bdf8;          /* Azul celeste resplandeciente */
+            --accent: #38bdf8;          /* Azul celeste / calipso resplandeciente */
             --accent-dark: #0284c7;     /* Azul de marca */
             --accent-glow: rgba(56, 189, 248, 0.25);
-            --text-main: #f8fafc;       /* Letras blancas brillantes */
+            --text-main: #ffffff;       /* Letras blancas puras */
             --text-muted: #94a3b8;      /* Gris claro para texto secundario */
             --border: #1e293b;
             --border-accent: #0284c7;
@@ -24,39 +24,68 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
         
-        /* Header / Navegación */
+        /* Header / Navegación - Ampliado para dar espacio al logo de ~5cm */
         header { 
             border-bottom: 1px solid var(--border); 
-            background: rgba(11, 15, 23, 0.9); 
+            background: rgba(11, 15, 23, 0.95); 
             backdrop-filter: blur(12px); 
             position: sticky; 
             top: 0; 
             z-index: 100; 
         }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 2rem; }
+        .nav-container { 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1rem 2rem; 
+        }
         
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        /* Logo ajustado y de mayor tamaño */
-        .logo-img { height: 65px; width: auto; max-width: 280px; object-fit: contain; display: block; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.15)); }
+        
+        /* Logo ampliado a aprox 5cm de alto (120px) */
+        .logo-img { 
+            height: 120px; 
+            width: auto; 
+            max-width: 380px; 
+            object-fit: contain; 
+            display: block; 
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.2)); 
+            transition: transform 0.2s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.02);
+        }
 
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
+        /* Enlaces del Menú en Blanco Puro con Hover Calipso */
+        .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+        .nav-links a { 
+            color: #ffffff;             /* Letras blancas puras sin pasar el ratón */
+            text-decoration: none; 
+            font-size: 1.05rem; 
+            font-weight: 600; 
+            transition: color 0.2s ease; 
+        }
+        .nav-links a:hover { 
+            color: var(--accent);       /* Cambia a celeste/calipso al poner la flecha del ratón */
+        }
+        
         .lang-switch { 
             border: 1px solid var(--border-accent); 
-            padding: 0.4rem 0.9rem; 
+            padding: 0.5rem 1.1rem; 
             border-radius: 6px; 
-            font-size: 0.85rem; 
-            font-weight: 600;
-            color: var(--accent); 
-            background: rgba(2, 132, 199, 0.1); 
+            font-size: 0.9rem; 
+            font-weight: 700;
+            color: #ffffff; 
+            background: rgba(2, 132, 199, 0.2); 
             cursor: pointer; 
             transition: all 0.2s; 
         }
         .lang-switch:hover { background: var(--accent); color: #000000; }
         
         /* Hero Section */
-        .hero { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem 4rem 2rem; text-align: center; }
+        .hero { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem 4rem 2rem; text-align: center; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--text-main); }
         .hero h1 span { 
             background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%); 
@@ -153,7 +182,6 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <!-- Nombre del archivo codificado para prevenir errores con espacios en GitHub Pages -->
                 <img src="clipedia%20logo%20web%20nuevo%20.jpg" alt="Clipedia" class="logo-img">
             </a>
             <ul class="nav-links">
@@ -260,7 +288,7 @@
                 </div>
                 <div class="feature-box">
                     <h4 data-es="Motion Graphics" data-en="Motion Graphics">Motion Graphics</h4>
-                    <p data-es="Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual." data-en="Animations and motion design harmoniously integrated into the audiovisual narrative.">Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual.</p>
+                    <p data-es="Animaciones y diseño gráfico en movimiento integrados de forma armónica en la narrativa audiovisual." data-en="Animations and motion design harmoniously integrated into the audiovisual narrative.">Animations and motion design harmoniously integrated into the audiovisual narrative.</p>
                 </div>
             </div>
         </div>
@@ -277,11 +305,11 @@
                 </div>
                 <div class="feature-box">
                     <h4 data-es="Desarrollo Web Ágil" data-en="Agile Web Development">Desarrollo Web Ágil</h4>
-                    <p data-es="Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo." data-en="Modern, lightweight web architectures, optimized for conversion and adapted to any device.">Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo.</p>
+                    <p data-es="Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a cualquier dispositivo." data-en="Modern, lightweight web architectures, optimized for conversion and adapted to any device.">Arquitecturas web modernas, ligeras, optimizadas para conversión y adaptadas a any device.</p>
                 </div>
                 <div class="feature-box">
                     <h4 data-es="Optimización de Procesos" data-en="Process Optimization">Optimización de Procesos</h4>
-                    <p data-es="Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas." data-en="Systematization of internal tasks through intelligent connection of corporate tools.">Systematization of internal tasks through intelligent connection of corporate tools.</p>
+                    <p data-es="Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas." data-en="Systematization of internal tasks through intelligent connection of corporate tools.">Sistematización de tareas internas mediante la conexión inteligente de herramientas corporativas.</p>
                 </div>
             </div>
         </div>
